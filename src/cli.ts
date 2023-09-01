@@ -86,7 +86,6 @@ class CLI {
     const absPath = this.getAbsPath(directory[0] || ".");
     const currentStruct = this.navigatePath(pathJs.dirname(absPath));
     const fileName = pathJs.basename(absPath);
-    console.log(currentStruct);
 
     if (typeof currentStruct[fileName] === "string") {
       return currentStruct[fileName];
@@ -100,10 +99,17 @@ class CLI {
     this.history = [];
   }
 
-  addHistory(command: string, output: string) {
+  addHistory(path: string, command: string, output: string) {
     const id = Date.now().toString();
-    const path = this.currentPath;
     this.history.push({ id, path, command, output });
+    return id;
+  }
+
+  setHistoryOutput(id: string, output: string) {
+    const history = this.history.find((item) => item.id === id);
+    if (history) {
+      history.output = output;
+    }
   }
 
   registerCommand(name: string, handler: Function) {
@@ -113,6 +119,7 @@ class CLI {
   runCommand(command: string) {
     const [cmd, ...args] = command.trim().split(" ");
     let output = "";
+    const id = this.addHistory(this.getShortPath(), command, "");
     try {
       if (this.commands.hasOwnProperty(cmd)) {
         output = this.commands[cmd](args);
@@ -123,7 +130,8 @@ class CLI {
       output = error.message;
     }
 
-    this.addHistory(command, output);
+    this.setHistoryOutput(id, output);
+
     return this.history;
   }
 
@@ -154,6 +162,12 @@ class CLI {
       }
     }
     return currentStruct;
+  }
+
+  getShortPath() {
+    const pathParts = this.currentPath.split("/");
+    const lastPart = pathParts.pop();
+    return lastPart || "";
   }
 }
 

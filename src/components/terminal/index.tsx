@@ -27,7 +27,7 @@ export default function Terminal() {
     if (e.key === "Enter") {
       const command = e.currentTarget.value;
       setHistory([...CLI.runCommand(command)]);
-      setPath(CLI.currentPath);
+      setPath(CLI.getShortPath());
       e.currentTarget.value = "";
     }
   };
