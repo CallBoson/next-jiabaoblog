@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import Terminal from "../components/terminal";
 
 export default function Home() {
-  const [height, setHeight] = useState("100vh"); // 默认值为100vh
+  const [height, setHeight] = useState("100vh");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setHeight(`${document.documentElement.clientHeight}px`);
   }, []);
 

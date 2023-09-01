@@ -57,6 +57,7 @@ export default function Terminal() {
         setHistory([...CLI.runCommand(command)]);
         setPath(CLI.getShortPath());
       }
+
       e.currentTarget.value = "";
       return;
     }
