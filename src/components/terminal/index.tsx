@@ -1,6 +1,6 @@
 "use client";
 import CLI from "@/cli";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { History } from "../../types/cli";
 
 const HistoryItem = ({ item }: { item: History }) => (
@@ -20,9 +20,17 @@ const HistoryItem = ({ item }: { item: History }) => (
 );
 
 export default function Terminal() {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const [history, setHistory] = useState<History[]>([]);
   const [path, setPath] = useState<string>("root");
   let commandHistoryIndex = -1;
+
+  useEffect(() => {
+    // 当历史记录更新时，滚动到底部
+    const terminal = document.querySelector("#terminal");
+    terminal?.scrollTo(0, terminal.scrollHeight);
+  }, [history]);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -63,7 +71,11 @@ export default function Terminal() {
         <div className="w-[12px] h-[12px] inline-block rounded-[8px] mt-[10px] mr-[10px] bg-[#e5c30f]"></div>
         <div className="w-[12px] h-[12px] inline-block rounded-[8px] mt-[10px] mr-[10px] bg-[#3bb662] cursor-pointer"></div>
       </header>
-      <div className="bg-[#30353a] h-full p-[10px] box-border text-white overflow-auto">
+      <div
+        id="terminal"
+        className="bg-[#30353a] h-full p-[10px] box-border text-white overflow-auto cursor-default"
+        onClick={() => inputRef.current?.focus()}
+      >
         <p>
           <span className="text-green-600">\[._.]/</span> - you're in Jiabao's
           cli! type `help` to get started.
@@ -77,8 +89,9 @@ export default function Terminal() {
             <span className="mx-[10px] text-red-400">❯</span>
           </span>
           <input
+            ref={inputRef}
             type="text"
-            className="outline-none bg-transparent flex-grow"
+            className="outline-none bg-transparent flex-grow cursor-default"
             onKeyDown={handleKeyDown}
           />
         </p>
