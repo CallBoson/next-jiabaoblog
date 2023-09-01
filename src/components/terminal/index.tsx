@@ -34,7 +34,7 @@ const HistoryItem = ({ item }: { item: History }) => (
 
 export default function Terminal() {
   const inputRef = useRef<HTMLInputElement>(null);
-
+  const [isMaximized, setIsMaximized] = useState<boolean>(false);
   const [history, setHistory] = useState<History[]>([]);
   const [path, setPath] = useState<string>("root");
   let commandHistoryIndex = -1;
@@ -86,11 +86,30 @@ export default function Terminal() {
   };
 
   return (
-    <div className="w-full h-full md:h-[360px] rounded-[10px] mt-10 md:mt-0">
+    <div
+      id="window"
+      className={`w-full h-full md:h-[360px] rounded-[10px] mt-10 md:mt-0 ${
+        isMaximized
+          ? "fixed w-[90%] !h-[90%] mt-0 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]"
+          : "static"
+      }`}
+      style={{ viewTransitionName: "window" }}
+    >
       <header className="bg-[#e0e8f0] h-[30px] rounded-t-[8px] pl-[10px]">
         <div className="w-[12px] h-[12px] inline-block rounded-[8px] mt-[10px] mr-[10px] bg-[#e75448]"></div>
         <div className="w-[12px] h-[12px] inline-block rounded-[8px] mt-[10px] mr-[10px] bg-[#e5c30f]"></div>
-        <div className="w-[12px] h-[12px] inline-block rounded-[8px] mt-[10px] mr-[10px] bg-[#3bb662] cursor-pointer"></div>
+        <div
+          className="w-[12px] h-[12px] inline-block rounded-[8px] mt-[10px] mr-[10px] bg-[#3bb662] cursor-pointer"
+          onClick={() => {
+            if (document.startViewTransition) {
+              document.startViewTransition(() => {
+                setIsMaximized(!isMaximized);
+              });
+            } else {
+              setIsMaximized(!isMaximized);
+            }
+          }}
+        ></div>
       </header>
       <div
         id="terminal"
