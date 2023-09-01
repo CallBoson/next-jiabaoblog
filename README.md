@@ -1,34 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Next-JiabaoBlog
 
-## Getting Started
+Next-JiabaoBlog 是一个使用 Next.js 和 TypeScript 构建的个人博客项目。它包含一个模拟的命令行界面，用户可以通过输入命令来浏览博客内容。
+主要功能
 
-First, run the development server:
+- ls: 列出当前目录下的所有文件和目录
+- cd: 切换目录
+- cat: 显示文件内容
+- clear: 清屏
+- path: 显示当前路径
+  安装
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+首先，你需要安装 Node.js 和 npm。然后，你可以通过以下命令来安装项目的依赖：
+install
+运行
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+你可以通过以下命令来启动开发服务器：
+dev
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+然后，你可以在浏览器中打开 http://localhost:3000 来查看项目。
+构建
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+你可以通过以下命令来构建项目：
+build
 
-## Learn More
+构建完成后，你可以通过以下命令来启动生产服务器：
+start
+代码检查
 
-To learn more about Next.js, take a look at the following resources:
+你可以通过以下命令来检查代码的质量：
+lint
+技术栈
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js
+- TypeScript
+- Tailwind CSS
+- PostCSS
+- ESLint
+  项目结构
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- src/cli.ts: 实现了命令行的主要功能
+- src/components/terminal/index.tsx: 实现了命令行的界面
+- src/app/page.tsx: 实现了主页的布局
+- src/text-to-html.ts: 提供了一些用于将文本转换为 HTML 的函数
+- src/types/cli.d.ts: 定义了一些 TypeScript 类型
+- src/app/globals.css: 定义了全局的 CSS 样式
+- src/app/layout.tsx: 定义了全局的布局
+- package.json: 定义了项目的依赖和脚本
+- tsconfig.json: 定义了 TypeScript 的配置
+- postcss.config.js: 定义了 PostCSS 的配置
+- tailwind.config.ts: 定义了 Tailwind CSS 的配置
+- next.config.js: 定义了 Next.js 的配置
