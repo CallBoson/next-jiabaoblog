@@ -85,7 +85,7 @@ export default function Terminal() {
   };
 
   return (
-    <div className="w-[600px] h-[360px] rounded-[10px]">
+    <div className="w-full h-full md:h-[360px] rounded-[10px] mt-10 md:mt-0">
       <header className="bg-[#e0e8f0] h-[30px] rounded-t-[8px] pl-[10px]">
         <div className="w-[12px] h-[12px] inline-block rounded-[8px] mt-[10px] mr-[10px] bg-[#e75448]"></div>
         <div className="w-[12px] h-[12px] inline-block rounded-[8px] mt-[10px] mr-[10px] bg-[#e5c30f]"></div>
