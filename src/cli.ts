@@ -9,6 +9,7 @@ class CLI {
   history: History[];
   commands: Record<string, Function>;
   struct: Record<string, any>;
+  commandHistory: string[];
 
   constructor() {
     this.currentPath = rootPath;
@@ -29,6 +30,7 @@ class CLI {
         },
       },
     };
+    this.commandHistory = [];
     this.registerCommands();
   }
 
@@ -120,6 +122,7 @@ class CLI {
     const [cmd, ...args] = command.trim().split(" ");
     let output = "";
     const id = this.addHistory(this.getShortPath(), command, "");
+    this.commandHistory.push(command);
     try {
       if (this.commands.hasOwnProperty(cmd)) {
         output = this.commands[cmd](args);

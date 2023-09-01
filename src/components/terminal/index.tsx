@@ -22,6 +22,7 @@ const HistoryItem = ({ item }: { item: History }) => (
 export default function Terminal() {
   const [history, setHistory] = useState<History[]>([]);
   const [path, setPath] = useState<string>("root");
+  let commandHistoryIndex = -1;
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -29,6 +30,29 @@ export default function Terminal() {
       setHistory([...CLI.runCommand(command)]);
       setPath(CLI.getShortPath());
       e.currentTarget.value = "";
+      return;
+    }
+
+    if (e.key === "ArrowUp") {
+      if (CLI.commandHistory.length === 0) return;
+      if (commandHistoryIndex === -1) {
+        commandHistoryIndex = CLI.commandHistory.length - 1;
+      } else if (commandHistoryIndex > 0) {
+        commandHistoryIndex--;
+      }
+      e.currentTarget.value = CLI.commandHistory[commandHistoryIndex];
+      return;
+    }
+
+    if (e.key === "ArrowDown") {
+      if (CLI.commandHistory.length === 0) return;
+      if (commandHistoryIndex < CLI.commandHistory.length - 1) {
+        commandHistoryIndex++;
+      } else {
+        e.currentTarget.value = "";
+        return;
+      }
+      e.currentTarget.value = CLI.commandHistory[commandHistoryIndex];
     }
   };
 
