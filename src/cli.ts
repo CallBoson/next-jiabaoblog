@@ -21,16 +21,15 @@ class CLI {
     this.commands = {};
     this.struct = {
       root: {
-        "about.txt": "This is about",
-        "contact.txt": "This is contact",
-        "resume.txt": "This is resume",
+        "about.txt": "前端程序员，uping，该项目基于Next.js",
+        "contact.txt": "微❤️: cbdljb",
         skills: {
           frontend: {
-            "react.txt": "This is react",
-            "vue.txt": "This is vue",
+            "react.txt": "你也会react吗？我们可以一起交流",
+            "vue.txt": "你是尤雨溪门徒？",
           },
-          "programming.txt": "This is programming",
-          "design.txt": "This is design",
+          "programming.txt": "fuck offffffffff",
+          "design.txt": "其实我并不会design",
         },
       },
     };

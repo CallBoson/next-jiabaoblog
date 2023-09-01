@@ -19,10 +19,14 @@ export default function Home() {
 
       <div className="md:mt-0 mt-28 mb-8 text-center leading-[16px] text-white">
         <p>© Jiabao 2023</p>
-        <p>Special One</p>
+        <p>Special One ❤️</p>
         <p>
-          Site code cannot be found{" "}
-          <a className="text-sky-300 font-bold" target="_blank" href="#">
+          Site code can be found{" "}
+          <a
+            className="text-sky-300 font-bold"
+            target="_blank"
+            href="https://github.com/CallBoson/next-jiabaoblog"
+          >
             here
           </a>
         </p>
