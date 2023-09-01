@@ -1,11 +1,24 @@
 "use client";
+
+declare global {
+  interface Document {
+    startViewTransition?: (callback: () => void) => void;
+  }
+}
+
 import CLI from "@/cli";
 import { useEffect, useRef, useState } from "react";
 import type { History } from "../../types/cli";
 
 const HistoryItem = ({ item }: { item: History }) => (
   <>
-    <p className="flex my-2">
+    <p
+      className="flex my-2"
+      style={{ viewTransitionName: "var(--i)" }}
+      ref={(ref) =>
+        ref?.style.setProperty("--i", String(Math.floor(Math.random() * 100)))
+      }
+    >
       <span className="">
         <span className="text-green-300">{item.path}</span>
         <span className="mx-[10px] text-red-400">❯</span>
@@ -35,8 +48,15 @@ export default function Terminal() {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       const command = e.currentTarget.value;
-      setHistory([...CLI.runCommand(command)]);
-      setPath(CLI.getShortPath());
+      if (document.startViewTransition) {
+        document.startViewTransition(() => {
+          setHistory([...CLI.runCommand(command)]);
+          setPath(CLI.getShortPath());
+        });
+      } else {
+        setHistory([...CLI.runCommand(command)]);
+        setPath(CLI.getShortPath());
+      }
       e.currentTarget.value = "";
       return;
     }
@@ -83,7 +103,7 @@ export default function Terminal() {
         {history.map((item, index) => (
           <HistoryItem key={item.id} item={item} />
         ))}
-        <p className="flex mt-2">
+        <p className="flex mt-2" style={{ viewTransitionName: "input" }}>
           <span className="">
             <span className="text-green-300">{path}</span>
             <span className="mx-[10px] text-red-400">❯</span>

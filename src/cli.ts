@@ -4,6 +4,10 @@ import { wrapWithLiTag, wrapWithTagForDirectory } from "./text-to-html";
 
 const rootPath = "root";
 
+const noWriteAccess: Error = new Error(
+  "Error: you do not have write access to this directory"
+);
+
 class CLI {
   currentPath: string;
   history: History[];
@@ -41,6 +45,21 @@ class CLI {
     this.registerCommand("cd", this.cd.bind(this));
     this.registerCommand("cat", this.cat.bind(this));
     this.registerCommand("clear", this.clear.bind(this));
+    this.registerCommand("mkdir", this.mkdir.bind(this));
+    this.registerCommand("touch", this.touch.bind(this));
+    this.registerCommand("rm", this.rm.bind(this));
+  }
+
+  mkdir() {
+    throw noWriteAccess;
+  }
+
+  touch() {
+    throw noWriteAccess;
+  }
+
+  rm() {
+    throw noWriteAccess;
   }
 
   help() {
