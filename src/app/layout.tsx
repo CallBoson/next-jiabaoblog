@@ -16,6 +16,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+        <title>Jiabao</title>
+        <meta name="description" content="Jiabao's Blog" />
+        <meta name="author" content="Jiabao" />
+        <meta name="keywords" content="Jiabao, Blog" />
+      </head>
+
       <body className={inter.className}>{children}</body>
     </html>
   )
