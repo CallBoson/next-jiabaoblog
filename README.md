@@ -42,6 +42,20 @@ npm run build
 npm run start
 ```
 
+## Docker 部署
+
+在项目的根目录下运行以下命令来构建 Docker 镜像：
+
+    ```
+    docker build -t next-jiabaoblog .
+    ```
+
+然后，你可以通过以下命令来启动 Docker 容器：
+
+    ```
+    docker run -d -p 3000:3000 next-jiabaoblog
+    ```
+
 ## 代码检查
 
 你可以通过以下命令来检查代码的质量：
