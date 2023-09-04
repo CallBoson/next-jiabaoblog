@@ -90,7 +90,7 @@ export default function Terminal() {
       id="window"
       className={`w-full h-full md:h-[360px] rounded-[10px] mt-10 md:mt-0 ${
         isMaximized
-          ? "fixed w-[90%] !h-[90%] mt-0 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]"
+          ? "fixed !w-[90%] !h-[90%] mt-0 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]"
           : "static"
       }`}
       style={{ viewTransitionName: "window" }}
