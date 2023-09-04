@@ -1,20 +1,16 @@
-# 使用官方的 Node.js 16 镜像作为基础镜像
-FROM node:16
+FROM node:lts-alpine
 
-# 设置工作目录
+RUN npm install pnpm -g
+
 WORKDIR /usr/src/app
 
-# 将 package.json 和 package-lock.json 复制到工作目录
 COPY package*.json ./
 
-# 安装项目依赖
-RUN npm install
+RUN pnpm install --production && rm -rf /root/.npm /root/.pnpm-store /usr/local/share/.cache /tmp/*
 
-# 将项目代码复制到工作目录
 COPY . .
 
-# 构建项目
-RUN npm run build
+RUN pnpm run build
 
 # 暴露 3000 端口
 EXPOSE 3000
