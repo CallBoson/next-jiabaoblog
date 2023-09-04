@@ -1,8 +1,8 @@
-# Next-JiabaoBlog
+# 🚀 Next-JiabaoBlog
 
 Next-JiabaoBlog 是一个使用 Next.js 和 TypeScript 构建的个人博客项目。它包含一个模拟的命令行界面，用户可以通过输入命令来浏览博客内容。
 
-## 主要功能
+## 🎯 主要功能
 
 - `ls`: 列出当前目录下的所有文件和目录
 - `cd`: 切换目录
@@ -10,7 +10,11 @@ Next-JiabaoBlog 是一个使用 Next.js 和 TypeScript 构建的个人博客项�
 - `clear`: 清屏
 - `path`: 显示当前路径
 
-## 安装
+## 🌐 线上体验
+
+你可以访问 [http://www.jiabao.online](http://www.jiabao.online) 来在线体验本项目。
+
+## 🛠️ 安装
 
 首先，你需要安装 Node.js 和 npm。然后，你可以通过以下命令来安装项目的依赖：
 
@@ -18,7 +22,7 @@ Next-JiabaoBlog 是一个使用 Next.js 和 TypeScript 构建的个人博客项�
 npm install
 ```
 
-## 运行
+## 🚀 运行
 
 你可以通过以下命令来启动开发服务器：
 
@@ -28,7 +32,7 @@ npm run dev
 
 然后，你可以在浏览器中打开 [http://localhost:3000](http://localhost:3000) 来查看项目。
 
-## 构建
+## 🏗️ 构建
 
 你可以通过以下命令来构建项目：
 
@@ -42,21 +46,21 @@ npm run build
 npm run start
 ```
 
-## Docker 部署
+## 🐳 Docker 部署
 
 在项目的根目录下运行以下命令来构建 Docker 镜像：
 
-    ```
-    docker build -t next-jiabaoblog .
-    ```
+```
+docker build -t next-jiabaoblog .
+```
 
 然后，你可以通过以下命令来启动 Docker 容器：
 
-    ```
-    docker run -d -p 3000:3000 next-jiabaoblog
-    ```
+```
+docker run -d -p 3000:3000 next-jiabaoblog
+```
 
-## 代码检查
+## 🧹 代码检查
 
 你可以通过以下命令来检查代码的质量：
 
@@ -64,7 +68,7 @@ npm run start
 npm run lint
 ```
 
-## 技术栈
+## 🧰 技术栈
 
 - Next.js
 - TypeScript
