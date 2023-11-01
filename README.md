@@ -2,6 +2,8 @@
 
 Next-JiabaoBlog 是一个使用 Next.js 和 TypeScript 构建的个人博客项目。它包含一个模拟的命令行界面，用户可以通过输入命令来浏览博客内容。
 
+![ScreenShot](docs/image.png)
+
 ## 🎯 主要功能
 
 - `ls`: 列出当前目录下的所有文件和目录
