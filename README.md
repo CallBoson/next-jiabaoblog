@@ -12,10 +12,6 @@ Next-JiabaoBlog 是一个使用 Next.js 和 TypeScript 构建的个人博客项�
 - `clear`: 清屏
 - `path`: 显示当前路径
 
-## 🌐 线上体验
-
-你可以访问 [http://www.jiabao.online](http://www.jiabao.online) 来在线体验本项目。
-
 ## 🛠️ 安装
 
 首先，你需要安装 Node.js 和 npm。然后，你可以通过以下命令来安装项目的依赖：
